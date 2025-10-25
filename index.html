@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador de Campeones - LoL</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      @font-face {
+        font-family: 'Friz Quadrata Regular';
+        src: url('./assets/font/Friz\ Quadrata\ Regular.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Friz Quadrata Italic';
+        src: url('./assets/font/Friz\ Quadrata\ Italic.ttf') format('truetype');
+      }
+
+      body {
+        font-family: 'Friz Quadrata Regular', cursive;
+      }
+      .hero {
+        background: url('./assets/img/fondo_lol.jpeg') center/cover no-repeat;
+        color: white;
+        padding: 60px 0;
+        position: relative;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+
+      .hero .container {
+        position: relative;
+        z-index: 2;
+      }
+      .hero h1 {
+        font-family: 'Friz Quadrata Regular', cursive;
+        font-weight: 400;
+        font-size: 3.5rem;
+      }
+      .hero p {
+        font-family: 'Friz Quadrata Regular', cursive;
+        font-weight: 400;
+        font-size: 1.5rem;
+      }
+      .loading {
+        display: none;
+      }
+      .error {
+        display: none;
+      }
+      .result {
+        display: none;
+      }
+      .input-group .form-control {
+        border-radius: 25px 0 0 25px;
+        font-family: 'Friz Quadrata Regular', cursive;
+        font-weight: 400;
+      }
+      .input-group .btn {
+        border-radius: 0 25px 25px 0;
+        background-color: #ffd700;
+        border-color: #ffd700;
+        color: #000;
+        font-family: 'Friz Quadrata Regular', cursive;
+        font-weight: 400;
+        font-size: 1.1rem;
+      }
+      .input-group .btn:hover {
+        background-color: #ffc107;
+        border-color: #ffc107;
+      }
+      .card h3 {
+        font-family: 'Friz Quadrata Regular', cursive;
+        font-weight: 400;
+        font-size: 2rem;
+      }
+      .card p {
+        font-family: 'Friz Quadrata Regular', cursive;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="hero text-center">
+      <div class="container">
+        <h1 class="display-4 mb-4">Buscador de Campeones</h1>
+        <p class="lead mb-4">
+          Busca información de campeones de League of Legends
+        </p>
+
+        <!-- Búsqueda -->
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                id="championInput"
+                placeholder="Nombre del campeón (ej: Ahri)"
+              />
+              <button class="btn btn-warning" id="searchBtn">Buscar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="container mt-5">
+      <!-- Loading -->
+      <div class="text-center loading" id="loading">
+        <div class="spinner-border text-primary"></div>
+        <p class="mt-2">Buscando...</p>
+      </div>
+
+      <!-- Error -->
+      <div class="alert alert-danger error" id="error">
+        <span id="errorText"></span>
+      </div>
+
+      <!-- Resultado -->
+      <div class="card result" id="result">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              src=""
+              class="img-fluid rounded-start"
+              id="championImage"
+              alt="Champion"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3 id="championName"></h3>
+              <p id="championTitle"></p>
+              <hr />
+              <p><strong>Rol:</strong> <span id="championRole"></span></p>
+              <p>
+                <strong>Dificultad:</strong>
+                <span id="championDifficulty"></span>
+              </p>
+              <p><strong>Descripción:</strong></p>
+              <p id="championDescription"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- App JS -->
+    <script src="app.js"></script>
+  </body>
+</html>
