@@ -57,3 +57,4 @@ Aplicación web simple que permite buscar información de campeones de League of
 - Yasuo  
 - Jinx
 - Thresh
+- Seraphine
